@@ -29,3 +29,4 @@ def add_contact(first_name, last_name, email):
 if __name__ == '__main__':
     print 'Excecuting %s' % __file__
     populate()
+    
