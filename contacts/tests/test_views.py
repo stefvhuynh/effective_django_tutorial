@@ -18,10 +18,10 @@ class ContactListViewTests(TestCase):
         self.assertContains(response, 'Charlie Brown')
         
 
-class ContactCreateViewTests(TestCase):
-    def test_with_a_get_request(self):
-        
-    def test_with_a_post_request(self):
+# class ContactCreateViewTests(TestCase):
+#     def test_with_a_get_request(self):
+#
+#     def test_with_a_post_request(self):
 
 
 def add_contact(first_name, last_name, email):

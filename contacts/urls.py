@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
+from contacts import views
 
 urlpatterns = patterns(
-    'contacts.views',
-    url(r'^$', 'contact_list', name='contact_list'),
+    '',
+    url(r'^$', views.ContactList.as_view(), name='contact_list'),
 )
