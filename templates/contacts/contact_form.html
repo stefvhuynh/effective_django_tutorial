@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Add Contact</h1>
 
-<form method="post" action="{% url 'contacts:contact_new' %}">
+<form method="post" action="{% url 'contacts:contact_form' %}">
     {% csrf_token %}
     {% for field in contact_form.visible_fields %}
         {{ field.errors }}
