@@ -1,7 +1,11 @@
+{% extends 'base.html' %}
+
 <h1>Contacts</h1>
 
+{% block content %}
 <ul class="contact-list">
     {% for contact in contacts %}
         <li class="contact">{{ contact }}</li>
     {% endfor %}
 </ul>
+{% endblock %}
