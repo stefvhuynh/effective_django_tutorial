@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
+from django.http import QueryDict
 from django.views.generic import View
 from contacts.models import Contact
 from contacts.forms import ContactForm
@@ -52,7 +53,5 @@ class ContactEdit(View):
                 request, 'contacts/contact_edit.html', context, status=422
             )
     
-    def put(self, request, *args, **kwargs):
-        return self.post(request, *args, **kwargs)
     
             
