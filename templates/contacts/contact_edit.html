@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load contacts_extras %}
 {% block title %} | Edit Contact{% endblock %}
 
 {% block content %}
@@ -7,11 +7,7 @@
 
 <form method="post" action="{% url 'contacts:contact_edit' contact.id %}">
     {% csrf_token %}
-    {% for field in contact_form.visible_fields %}
-        {{ field.errors }}
-        {{ field.help_text }}
-        {{ field }}
-    {% endfor %}
+    {% contact_fields contact %}
     <button>Update</button>
 </form>
 {% endblock %}

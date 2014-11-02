@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from contacts.models import Contact
-from contacts.forms import ContactForm
 
 class ContactListTests(TestCase):
     """
@@ -31,7 +30,6 @@ class ContactNewTests(TestCase):
         response = self.client.get(reverse('contacts:contact_new'))
         
         self.assertEqual(response.status_code, 200)
-        self.assertIsInstance(response.context['contact_form'], ContactForm)
         self.assertContains(response, 'Add Contact')
     """
     POST requests
@@ -65,7 +63,6 @@ class ContactNewTests(TestCase):
         )
         
         self.assertEqual(response.status_code, 422)
-        self.assertIsInstance(response.context['contact_form'], ContactForm)
         self.assertEqual(len(Contact.objects.all()), 0)
 
 
@@ -101,7 +98,6 @@ class ContactEditTests(TestCase):
         )
         
         self.assertEqual(response.status_code, 200)
-        self.assertIsInstance(response.context['contact_form'], ContactForm)
         
     def test_get_with_invalid_id(self):
         response = self.client.get(

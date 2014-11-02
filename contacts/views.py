@@ -13,9 +13,7 @@ class ContactList(View):
 
 class ContactNew(View):
     def get(self, request, *args, **kwargs):
-        contact_form = ContactForm()
-        context = {'contact_form': contact_form}
-        return render(request, 'contacts/contact_new.html', context)
+        return render(request, 'contacts/contact_new.html')
         
     def post(self, request, *args, **kwargs):
         contact_form = ContactForm(request.POST)
@@ -24,10 +22,7 @@ class ContactNew(View):
             contact_form.save()
             return redirect(reverse('contacts:contact_list'))
         else:
-            context = {'contact_form': contact_form}
-            return render(
-                request, 'contacts/contact_new.html', context, status=422
-            )
+            return render(request, 'contacts/contact_new.html', status=422)
 
 
 class ContactDetail(View):
@@ -40,8 +35,7 @@ class ContactDetail(View):
 class ContactEdit(View):
     def get(self, request, *args, **kwargs):
         contact = get_object_or_404(Contact, pk=kwargs['contact_id'])
-        contact_form = ContactForm(instance=contact)
-        context = {'contact': contact, 'contact_form': contact_form}
+        context = {'contact': contact}
         return render(request, 'contacts/contact_edit.html', context)
         
     def post(self, request, *args, **kwargs):
@@ -53,7 +47,7 @@ class ContactEdit(View):
                 reverse('contacts:contact_detail', args=(contact.id,))
             )
         else:
-            context = {'contact': contact, 'contact_form': contact_form}
+            context = {'contact': contact}
             return render(
                 request, 'contacts/contact_edit.html', context, status=422
             )
