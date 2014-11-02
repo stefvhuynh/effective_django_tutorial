@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %} | Add Contact{% endblock %}
+{% block title %} | Edit Contact{% endblock %}
 
 {% block content %}
-<h1>Add Contact</h1>
+<h1>Edit Contact</h1>
 
-<form method="post" action="{% url 'contacts:contact_form' %}">
+<form method="post" action="{% url 'contacts:contact_edit' contact.id %}">
     {% csrf_token %}
     {% for field in contact_form.visible_fields %}
         {{ field.errors }}
         {{ field.help_text }}
         {{ field }}
     {% endfor %}
-    <button>Add</button>
+    <button>Update</button>
 </form>
 {% endblock %}

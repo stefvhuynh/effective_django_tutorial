@@ -3,11 +3,16 @@ from contacts import views
 
 urlpatterns = patterns(
     '',
-    url(r'^$', views.ContactListView.as_view(), name='contact_list'),
-    url(r'^new/$', views.ContactFormView.as_view(), name='contact_form'),
+    url(r'^$', views.ContactList.as_view(), name='contact_list'),
+    url(r'^new/$', views.ContactNew.as_view(), name='contact_new'),
     url(
         r'^(?P<contact_id>\d+)/$', 
-        views.ContactDetailView.as_view(), 
+        views.ContactDetail.as_view(), 
         name='contact_detail'
+    ),
+    url(
+        r'^(?P<contact_id>\d+)/edit/$', 
+        views.ContactEdit.as_view(), 
+        name='contact_edit'
     ),
 )
