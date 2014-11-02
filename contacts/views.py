@@ -52,4 +52,7 @@ class ContactEdit(View):
                 request, 'contacts/contact_edit.html', context, status=422
             )
     
+    def put(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
+    
             
